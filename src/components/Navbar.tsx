@@ -17,11 +17,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 40) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 40);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
@@ -51,31 +47,24 @@ export const Navbar: React.FC<NavbarProps> = ({
         id="main-navigation-header"
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
-            ? 'bg-[#030712]/85 backdrop-blur-xl border-b border-white/10 py-3.5 shadow-2xl shadow-black/50'
-            : 'bg-gradient-to-b from-black/70 via-black/30 to-transparent py-5 border-b border-white/5'
+            ? 'bg-[#030712]/85 backdrop-blur-xl border-b border-white/10 py-3 shadow-2xl shadow-black/50'
+            : 'bg-gradient-to-b from-black/70 via-black/30 to-transparent py-4 border-b border-white/5'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-          {/* LEFT: Elegant "S" monogram + STATUS MALL */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-6">
+          {/* STATUS MALL brand logo */}
           <a
             id="nav-logo"
             href="#home"
             onClick={(e) => handleScrollTo(e, '#home')}
-            className="flex items-center gap-3 group cursor-pointer"
+            aria-label="STATUS MALL — Home"
+            className="shrink-0 flex items-center group cursor-pointer"
           >
-            <div className="w-10 h-10 rounded-full border border-sky-400/40 bg-sky-950/40 backdrop-blur-md flex items-center justify-center shadow-[0_0_15px_rgba(56,189,248,0.25)] group-hover:border-sky-400 group-hover:shadow-[0_0_20px_rgba(56,189,248,0.45)] transition-all duration-300">
-              <span className="font-serif font-bold text-lg text-sky-200 tracking-wider group-hover:scale-105 transition-transform">
-                S
-              </span>
-            </div>
-            <div className="flex flex-col">
-              <span className="font-serif tracking-[0.22em] text-lg font-bold text-white uppercase group-hover:text-sky-200 transition-colors">
-                STATUS MALL
-              </span>
-              <span className="text-[9px] uppercase tracking-[0.3em] text-slate-400 font-medium -mt-0.5">
-                Luxury Lifestyle
-              </span>
-            </div>
+            <img
+              src="/assets/status-mall-logo.svg"
+              alt="STATUS MALL"
+              className="w-[170px] sm:w-[190px] lg:w-[205px] h-auto object-contain transition-transform duration-300 group-hover:scale-[1.02]"
+            />
           </a>
 
           {/* CENTER: Desktop Navigation Links */}
@@ -106,9 +95,8 @@ export const Navbar: React.FC<NavbarProps> = ({
             })}
           </nav>
 
-          {/* RIGHT: Search icon, Location icon, Virtual Tour button, Circular play icon */}
-          <div className="hidden md:flex items-center gap-2.5">
-            {/* Search Icon */}
+          {/* RIGHT: Search, Location, Virtual Tour */}
+          <div className="hidden md:flex items-center gap-2.5 shrink-0">
             <button
               id="nav-search-button"
               onClick={onOpenSearch}
@@ -119,7 +107,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               <Search className="w-4 h-4" />
             </button>
 
-            {/* Location Icon */}
             <a
               id="nav-location-button"
               href="#visit"
@@ -131,7 +118,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               <MapPin className="w-4 h-4" />
             </a>
 
-            {/* Virtual Tour Button */}
             <button
               id="nav-virtual-tour-button"
               onClick={onOpenVirtualTour}
@@ -141,7 +127,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span>Virtual Tour</span>
             </button>
 
-            {/* Circular Play Icon */}
             <button
               id="nav-play-tour-button"
               onClick={onOpenVirtualTour}
@@ -153,7 +138,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             </button>
           </div>
 
-          {/* Mobile Right Controls: Search + Menu */}
+          {/* Mobile Right Controls */}
           <div className="flex items-center gap-2 md:hidden">
             <button
               id="mobile-search-button"
