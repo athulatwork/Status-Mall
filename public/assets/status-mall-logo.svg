@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 180" role="img" aria-labelledby="title desc">
+  <title id="title">STATUS MALL</title>
+  <desc id="desc">STATUS MALL architectural S monogram and wordmark</desc>
+  <defs>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F7D58A"/>
+      <stop offset="1" stop-color="#C9932F"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(10 8)">
+    <path d="M70 18 L145 18 L182 40 L182 92 L156 92 L156 56 L145 49 L94 49 L94 66 L168 105 L168 152 L145 168 L70 168 L36 149 L36 98 L62 98 L62 132 L73 139 L112 139 L112 121 L36 81 L36 42 Z" fill="#F8FAFC"/>
+    <path d="M145 18 L182 40 L182 56 L156 42 L145 35 Z" fill="url(#gold)"/>
+    <path d="M94 66 L168 105 L168 121 L112 92 L112 121 L94 112 Z" fill="#071A3A"/>
+    <path d="M36 149 L70 168 L94 168 L73 156 L62 149 Z" fill="url(#gold)"/>
+    <path d="M145 152 L168 152 L145 168 L128 168 Z" fill="url(#gold)"/>
+  </g>
+  <text x="235" y="105" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="600" letter-spacing="11">STATUS MALL</text>
+</svg>
