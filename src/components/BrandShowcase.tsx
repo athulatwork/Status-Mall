@@ -9,42 +9,44 @@ export const BrandShowcase: React.FC<BrandShowcaseProps> = ({ onSelectBrand }) =
   return (
     <section
       id="brand-showcase-section"
-      className="relative z-20 -mt-8 sm:-mt-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+      className="relative z-20 -mt-10 sm:-mt-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
     >
-      <div className="rounded-2xl sm:rounded-3xl bg-[#060c1d]/90 backdrop-blur-2xl border border-white/10 p-6 sm:p-8 shadow-[0_25px_60px_rgba(0,0,0,0.8)]">
-        {/* Section Header */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-6 border-b border-white/5">
+      <div className="rounded-3xl bg-[#060c1d]/90 backdrop-blur-2xl border border-white/10 p-6 sm:p-8 lg:p-10 shadow-[0_25px_60px_rgba(0,0,0,0.85)]">
+        
+        {/* Editorial Section Header */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-6 border-b border-white/10">
           <div className="flex items-center gap-3">
-            <div className="w-1.5 h-4 bg-sky-400 rounded-full shadow-[0_0_8px_#38bdf8]" />
-            <h2 className="text-xs uppercase tracking-[0.3em] text-slate-300 font-semibold">
-              TOP BRANDS
-            </h2>
+            <div className="w-1.5 h-4 bg-sky-400 rounded-full shadow-[0_0_10px_#38bdf8]" />
+            <span className="text-xs uppercase tracking-[0.32em] text-slate-300 font-semibold">
+              CURATED MAISONS & FLAGSHIPS
+            </span>
           </div>
-          <span className="text-[11px] text-slate-400 font-light">
-            Curated flagship boutiques & international maisons
+          <span className="text-xs text-slate-400 font-light tracking-wide">
+            Confirmed premier boutiques, anchor spaces & entertainment venues
           </span>
         </div>
 
-        {/* Elegant circular/pill brand buttons with monochrome/white treatment & subtle hover */}
-        <div className="mt-6 flex items-center justify-start sm:justify-between gap-3 sm:gap-4 overflow-x-auto pb-2 scrollbar-none">
+        {/* Editorial Monochrome Logo Wall / Strip */}
+        <div className="mt-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 sm:gap-4">
           {TOP_BRANDS.map((brand, idx) => (
             <button
               key={brand.name}
               id={`brand-btn-${idx}`}
               onClick={() => onSelectBrand?.(brand.name)}
-              className="group flex-shrink-0 flex flex-col items-center gap-2.5 px-4 py-3 rounded-2xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 hover:border-sky-400/40 transition-all duration-300 cursor-pointer min-w-[90px] sm:min-w-[100px] text-center"
+              className="group relative flex flex-col items-center justify-center p-4 sm:p-5 rounded-2xl bg-white/[0.02] hover:bg-white/[0.06] border border-white/5 hover:border-sky-400/40 transition-all duration-300 cursor-pointer overflow-hidden text-center"
               title={`${brand.name} — ${brand.category}`}
             >
-              {/* Monochromatic circular icon badge */}
-              <div className="w-12 h-12 rounded-full bg-slate-900/90 border border-white/15 group-hover:border-sky-400/60 flex items-center justify-center text-white/80 group-hover:text-white transition-all duration-300 group-hover:shadow-[0_0_15px_rgba(56,189,248,0.25)] group-hover:scale-105">
-                <span className="font-serif font-bold text-xs sm:text-sm tracking-wider uppercase">
-                  {brand.name === '+ More' ? '+' : brand.name.slice(0, 4)}
-                </span>
-              </div>
+              {/* Subtle top light on hover */}
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-1 bg-sky-400/0 group-hover:bg-sky-400/50 blur-sm transition-all" />
 
-              {/* Brand Label */}
-              <span className="text-xs font-medium text-slate-300 group-hover:text-white tracking-wide transition-colors">
+              {/* Brand Typography */}
+              <span className="font-serif text-base sm:text-lg font-bold text-white/90 group-hover:text-white tracking-[0.12em] uppercase transition-all duration-300 group-hover:scale-105">
                 {brand.name}
+              </span>
+
+              {/* Category Subtitle */}
+              <span className="text-[10px] uppercase tracking-wider text-slate-400 group-hover:text-sky-300 font-medium mt-1.5 transition-colors">
+                {brand.category}
               </span>
             </button>
           ))}

@@ -1,16 +1,19 @@
+export type TenantStatus = 'Open' | 'Coming Soon' | 'Available';
+
 export interface Store {
   id: string;
   name: string;
-  category: 'Fashion' | 'Electronics' | 'Beauty' | 'Lifestyle' | 'Sports' | 'Luxury';
-  floor: string;
-  zone: string;
-  logoText: string;
-  image: string;
+  category: string;
   description: string;
+  floor: 'Ground Floor' | 'Second Floor';
+  status: TenantStatus;
   tags: string[];
-  hours: string;
-  phone: string;
+  displayType?: string;
   isFeatured?: boolean;
+  image?: string;
+  zone?: string;
+  hours?: string;
+  phone?: string;
 }
 
 export interface Restaurant {
@@ -61,6 +64,7 @@ export interface ChatMessage {
   suggestions?: string[];
   actionLink?: {
     text: string;
-    sectionId: string;
+    sectionId?: string;
+    url?: string;
   };
 }

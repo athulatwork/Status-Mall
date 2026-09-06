@@ -25,8 +25,10 @@ export const SearchModal: React.FC<SearchModalProps> = ({
       (s) =>
         s.name.toLowerCase().includes(q) ||
         s.category.toLowerCase().includes(q) ||
+        s.description.toLowerCase().includes(q) ||
+        s.floor.toLowerCase().includes(q) ||
         s.tags.some((t) => t.toLowerCase().includes(q))
-    ).slice(0, 4);
+    ).slice(0, 6);
 
     const dining = RESTAURANTS_DATA.filter(
       (r) =>

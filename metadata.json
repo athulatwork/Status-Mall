@@ -1,6 +1,6 @@
 {
   "name": "STATUS MALL",
-  "description": "A premium luxury shopping mall and lifestyle destination featuring world-class shopping, fine dining, multiplex cinema, and futuristic experiences.",
+  "description": "STATUS MALL is a premier shopping and lifestyle destination on Melattur Road, Kottappalla, Edathanattukara, Palakkad District, Kerala. Open daily 9:00 AM – 10:00 PM with dedicated on-site vehicle parking.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

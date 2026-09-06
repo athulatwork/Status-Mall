@@ -28,6 +28,18 @@ export default function App() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [highlightedStoreName, setHighlightedStoreName] = useState<string | undefined>(undefined);
 
+  // Keyboard shortcut listener (Cmd+K / Ctrl+K) for global search
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        setIsSearchOpen((prev) => !prev);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
   // Active section observer based on scroll position
   useEffect(() => {
     const sectionIds = ['home', 'shops', 'dining', 'offers', 'events', 'visit'];

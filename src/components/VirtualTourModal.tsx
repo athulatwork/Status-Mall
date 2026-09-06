@@ -15,11 +15,22 @@ export const VirtualTourModal: React.FC<VirtualTourModalProps> = ({ isOpen, onCl
   if (!isOpen) return null;
 
   const chapters = [
-    { title: 'The Grand Rotunda', time: '0:00', desc: '40-meter kinetic illuminated glass atrium' },
-    { title: 'Luxury Boulevard', time: '0:30', desc: 'Gucci, Rolex, Apple Flagship Pavilion' },
-    { title: 'Culinary Sky Terraces', time: '1:00', desc: 'Lumina Sky Lounge & Botanical Gardens' },
-    { title: 'CineStatus 8-Screen Multiplex', time: '1:30', desc: 'IMAX Laser Projection & VIP Lounges' },
+    { title: 'The Grand Rotunda', time: '0:00', seconds: 0, desc: '40-meter kinetic illuminated glass atrium' },
+    { title: 'Luxury Boulevard', time: '0:30', seconds: 30, desc: 'Gucci, Rolex, Apple Flagship Pavilion' },
+    { title: 'Culinary Sky Terraces', time: '1:00', seconds: 60, desc: 'Lumina Sky Lounge & Botanical Gardens' },
+    { title: 'CineStatus 8-Screen Multiplex', time: '1:30', seconds: 90, desc: 'IMAX Laser Projection & VIP Lounges' },
   ];
+
+  const handleSelectChapter = (index: number, seconds: number) => {
+    setActiveChapter(index);
+    if (videoRef.current) {
+      videoRef.current.currentTime = seconds;
+      if (!isPlaying) {
+        videoRef.current.play().catch(() => {});
+        setIsPlaying(true);
+      }
+    }
+  };
 
   const togglePlay = () => {
     if (videoRef.current) {
@@ -132,7 +143,7 @@ export const VirtualTourModal: React.FC<VirtualTourModalProps> = ({ isOpen, onCl
           {chapters.map((ch, idx) => (
             <button
               key={ch.title}
-              onClick={() => setActiveChapter(idx)}
+              onClick={() => handleSelectChapter(idx, ch.seconds)}
               className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${
                 activeChapter === idx
                   ? 'bg-sky-500/15 border-sky-400/50 shadow-[0_0_15px_rgba(56,189,248,0.15)]'

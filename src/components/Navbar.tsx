@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Search, MapPin, Play, Menu, X, Compass } from 'lucide-react';
+import { MALL_INFO } from '../data/mallData';
 
 interface NavbarProps {
   activeSection: string;
@@ -206,9 +207,9 @@ export const Navbar: React.FC<NavbarProps> = ({
               <Play className="w-4 h-4 fill-slate-950" />
               Watch Cinematic Virtual Tour
             </button>
-            <div className="flex items-center justify-between text-xs text-slate-400 font-light">
-              <span>Today: 10:00 AM – 11:00 PM</span>
-              <span className="text-sky-400">☀ 28°C Metro Central</span>
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-1 text-xs text-slate-400 font-light px-1">
+              <span>{MALL_INFO.operatingHours.badge}</span>
+              <span className="text-[#e2c17d]">{MALL_INFO.address.cityDistrict}</span>
             </div>
           </div>
         </div>

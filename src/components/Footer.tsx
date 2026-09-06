@@ -1,18 +1,8 @@
-import React, { useState } from 'react';
-import { Instagram, Facebook, Youtube, ArrowRight, Check, Sparkles } from 'lucide-react';
+import React from 'react';
+import { MapPin, Clock, Phone, Car, ArrowRight, ArrowUpRight } from 'lucide-react';
+import { MALL_INFO } from '../data/mallData';
 
 export const Footer: React.FC = () => {
-  const [email, setEmail] = useState('');
-  const [isSubscribed, setIsSubscribed] = useState(false);
-
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email) {
-      setIsSubscribed(true);
-      setEmail('');
-    }
-  };
-
   const handleScroll = (href: string) => {
     const el = document.querySelector(href);
     if (el) {
@@ -23,243 +13,147 @@ export const Footer: React.FC = () => {
   return (
     <footer
       id="main-footer"
-      className="relative bg-[#02050f] text-slate-400 border-t border-white/10 pt-20 pb-12 overflow-hidden"
+      className="relative bg-[#02050f] text-slate-400 border-t border-white/10 pt-16 pb-12 overflow-hidden"
     >
-      {/* Ambient background glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-32 bg-sky-500/5 blur-3xl pointer-events-none" />
+      {/* Ambient subtle glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-24 bg-[#e2c17d]/5 blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Top VIP Privileges Banner */}
-        <div className="rounded-3xl bg-gradient-to-r from-[#07102b] via-[#09153a] to-[#07102b] border border-white/15 p-8 sm:p-12 mb-16 flex flex-col lg:flex-row items-center justify-between gap-8 shadow-2xl">
-          <div className="max-w-xl text-center lg:text-left">
-            <div className="flex items-center justify-center lg:justify-start gap-2 mb-2 text-sky-400">
-              <Sparkles className="w-4 h-4" />
-              <span className="text-xs uppercase tracking-[0.25em] font-semibold">
-                STATUS PRIVILÈGE CLUB
+        {/* Main Compact Editorial Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 pb-12 border-b border-white/10">
+          
+          {/* Brand & Address Column */}
+          <div className="lg:col-span-5 flex flex-col items-start">
+            <div className="flex items-center gap-3">
+              <div className="w-9 h-9 rounded-full border border-[#e2c17d]/40 bg-slate-900/60 flex items-center justify-center shadow-[0_0_12px_rgba(226,193,125,0.25)]">
+                <span className="font-serif font-bold text-base text-[#e2c17d]">S</span>
+              </div>
+              <span className="font-serif tracking-[0.24em] text-lg font-bold text-white uppercase">
+                {MALL_INFO.name}
               </span>
             </div>
-            <h3 className="font-serif text-2xl sm:text-3xl font-bold text-white">
-              Receive Private Invitations & First Access
-            </h3>
-            <p className="mt-2 text-xs sm:text-sm text-slate-300 font-light">
-              Complimentary valet passes, secret seasonal sales, and priority reservations at Lumina Sky Lounge.
-            </p>
-          </div>
 
-          <form onSubmit={handleSubscribe} className="w-full sm:w-auto flex flex-col sm:flex-row gap-3">
-            {isSubscribed ? (
-              <div className="flex items-center gap-2 px-6 py-3 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 text-xs font-semibold">
-                <Check className="w-4 h-4" />
-                <span>You are on the VIP Privilège list</span>
-              </div>
-            ) : (
-              <>
-                <input
-                  type="email"
-                  placeholder="Enter your email address..."
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  className="px-5 py-3 rounded-full bg-black/40 border border-white/20 text-white placeholder-slate-500 text-xs sm:text-sm focus:outline-none focus:border-sky-400 w-full sm:w-72 backdrop-blur-md"
-                />
-                <button
-                  type="submit"
-                  className="px-6 py-3 rounded-full bg-sky-500 hover:bg-sky-400 text-slate-950 text-xs uppercase tracking-wider font-bold shadow-[0_0_15px_rgba(56,189,248,0.4)] transition-all flex items-center justify-center gap-2 cursor-pointer"
-                >
-                  <span>Join Club</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </button>
-              </>
-            )}
-          </form>
-        </div>
-
-        {/* Main Footer Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-16 border-b border-white/10">
-          {/* Logo & Manifesto Column */}
-          <div className="lg:col-span-4 flex flex-col items-start">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full border border-sky-400/40 bg-sky-950/40 flex items-center justify-center shadow-[0_0_15px_rgba(56,189,248,0.25)]">
-                <span className="font-serif font-bold text-lg text-sky-200">S</span>
-              </div>
-              <div className="flex flex-col">
-                <span className="font-serif tracking-[0.22em] text-lg font-bold text-white uppercase">
-                  STATUS MALL
-                </span>
-                <span className="text-[9px] uppercase tracking-[0.3em] text-slate-400 font-medium">
-                  Destination Luxury
-                </span>
-              </div>
+            <div className="mt-4 text-xs sm:text-sm text-slate-300 font-light leading-relaxed space-y-0.5">
+              <p>Melattur Road,</p>
+              <p>Kottappalla, Alanallur-III,</p>
+              <p>Edathanattukara,</p>
+              <p>Palakkad District, Kerala — 678601, India.</p>
             </div>
 
-            <p className="mt-4 text-xs sm:text-sm text-slate-400 font-light leading-relaxed max-w-sm">
-              An architectural triumph redefining retail and leisure. Experience over 120 global flagships, haute cuisine terraces, and cutting-edge cinema.
-            </p>
-
-            <div className="mt-6 text-xs text-slate-300">
-              <span className="block font-medium text-white">Metro Central District</span>
-              <span>8800 Grand Boulevard</span>
-              <span className="block text-sky-400 mt-1">Open Today: 10:00 AM – 11:00 PM</span>
+            <div className="mt-5">
+              <a
+                id="footer-get-directions-btn"
+                href={MALL_INFO.location.googleMapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#e2c17d] hover:bg-[#f0d499] text-slate-950 text-xs font-bold uppercase tracking-wider shadow-[0_0_15px_rgba(226,193,125,0.3)] transition-all cursor-pointer"
+              >
+                <span>GET DIRECTIONS</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </a>
             </div>
           </div>
 
-          {/* EXPLORE Column */}
-          <div className="lg:col-span-3 sm:pl-4">
-            <h4 className="text-xs uppercase tracking-[0.22em] font-bold text-white mb-4">
-              EXPLORE
-            </h4>
-            <ul className="space-y-2.5 text-xs sm:text-sm">
-              <li>
+          {/* Operating Hours & Parking Column */}
+          <div className="lg:col-span-4 flex flex-col justify-start">
+            <div>
+              <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-semibold text-[#e2c17d] mb-2">
+                <Clock className="w-3.5 h-3.5" />
+                <span>OPEN DAILY</span>
+              </div>
+              <p className="font-serif text-xl sm:text-2xl font-bold text-white tracking-wide">
+                {MALL_INFO.operatingHours.display}
+              </p>
+              <p className="text-xs text-slate-400 mt-1">
+                {MALL_INFO.operatingHours.days}
+              </p>
+            </div>
+
+            <div className="mt-6 pt-5 border-t border-white/5">
+              <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-semibold text-emerald-400 mb-1.5">
+                <Car className="w-3.5 h-3.5" />
+                <span>PARKING AVAILABLE</span>
+              </div>
+              <p className="text-xs text-slate-300 font-light leading-relaxed">
+                Dedicated on-site vehicle parking for shoppers.
+              </p>
+            </div>
+          </div>
+
+          {/* Primary Contacts & Navigation Column */}
+          <div className="lg:col-span-3 flex flex-col justify-between">
+            <div>
+              <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-semibold text-[#e2c17d] mb-2">
+                <Phone className="w-3.5 h-3.5" />
+                <span>CONTACT</span>
+              </div>
+              <div className="flex flex-col gap-2 text-xs sm:text-sm font-medium">
+                {MALL_INFO.contactLinks.map((contact, idx) => (
+                  <a
+                    key={contact.tel}
+                    id={`footer-tel-${idx + 1}`}
+                    href={contact.tel}
+                    className="text-slate-200 hover:text-[#e2c17d] transition-colors inline-flex items-center gap-2"
+                  >
+                    <span>{contact.display}</span>
+                    <ArrowUpRight className="w-3 h-3 text-slate-500 hover:text-[#e2c17d]" />
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-6 pt-5 border-t border-white/5">
+              <span className="text-[10px] uppercase tracking-[0.2em] font-semibold text-slate-400 block mb-2">
+                EXPLORE SECTIONS
+              </span>
+              <div className="flex flex-wrap gap-x-4 gap-y-1.5 text-xs text-slate-300">
                 <button
+                  type="button"
                   onClick={() => handleScroll('#home')}
                   className="hover:text-white transition-colors cursor-pointer"
                 >
                   Home
                 </button>
-              </li>
-              <li>
                 <button
+                  type="button"
                   onClick={() => handleScroll('#shops')}
                   className="hover:text-white transition-colors cursor-pointer"
                 >
-                  Shops & Boutiques
+                  Shops
                 </button>
-              </li>
-              <li>
                 <button
+                  type="button"
                   onClick={() => handleScroll('#dining')}
                   className="hover:text-white transition-colors cursor-pointer"
                 >
-                  Dining & Sky Lounge
+                  Dining
                 </button>
-              </li>
-              <li>
                 <button
-                  onClick={() => handleScroll('#offers')}
-                  className="hover:text-white transition-colors cursor-pointer"
-                >
-                  Exclusive Offers
-                </button>
-              </li>
-              <li>
-                <button
+                  type="button"
                   onClick={() => handleScroll('#events')}
                   className="hover:text-white transition-colors cursor-pointer"
                 >
-                  Events & Entertainment
+                  Events
                 </button>
-              </li>
-            </ul>
-          </div>
-
-          {/* VISIT Column */}
-          <div className="lg:col-span-3">
-            <h4 className="text-xs uppercase tracking-[0.22em] font-bold text-white mb-4">
-              VISIT
-            </h4>
-            <ul className="space-y-2.5 text-xs sm:text-sm">
-              <li>
                 <button
+                  type="button"
                   onClick={() => handleScroll('#visit')}
                   className="hover:text-white transition-colors cursor-pointer"
                 >
-                  Getting Here & Metro
+                  Visit Us
                 </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => handleScroll('#visit')}
-                  className="hover:text-white transition-colors cursor-pointer"
-                >
-                  Smart Parking & Valet
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => handleScroll('#visit')}
-                  className="hover:text-white transition-colors cursor-pointer"
-                >
-                  Accessibility & Strollers
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => handleScroll('#visit')}
-                  className="hover:text-white transition-colors cursor-pointer"
-                >
-                  Guest Services & Concierge
-                </button>
-              </li>
-              <li>
-                <a
-                  href="tel:+18007828876"
-                  className="hover:text-white transition-colors"
-                >
-                  Contact Concierge
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* FOLLOW Column */}
-          <div className="lg:col-span-2">
-            <h4 className="text-xs uppercase tracking-[0.22em] font-bold text-white mb-4">
-              FOLLOW
-            </h4>
-            <div className="flex flex-col gap-2.5 text-xs sm:text-sm">
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 hover:text-white transition-colors"
-              >
-                <Instagram className="w-4 h-4 text-sky-400" />
-                <span>Instagram</span>
-              </a>
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 hover:text-white transition-colors"
-              >
-                <Facebook className="w-4 h-4 text-sky-400" />
-                <span>Facebook</span>
-              </a>
-              <a
-                href="https://youtube.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 hover:text-white transition-colors"
-              >
-                <Youtube className="w-4 h-4 text-sky-400" />
-                <span>YouTube</span>
-              </a>
-              <a
-                href="https://x.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 hover:text-white transition-colors"
-              >
-                <span className="font-bold text-sky-400">𝕏</span>
-                <span>X (Twitter)</span>
-              </a>
+              </div>
             </div>
           </div>
+
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
-          <p>© 2026 Status Mall. All rights reserved.</p>
-          <div className="flex items-center gap-6">
-            <a href="#" className="hover:text-slate-300 transition-colors">
-              Privacy Policy
-            </a>
-            <a href="#" className="hover:text-slate-300 transition-colors">
-              Terms of Guest Service
-            </a>
-            <a href="#" className="hover:text-slate-300 transition-colors">
-              Security & Safety
-            </a>
+        <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+          <p>© 2026 STATUS MALL. All rights reserved.</p>
+          <div className="flex items-center gap-2">
+            <MapPin className="w-3.5 h-3.5 text-[#e2c17d]" />
+            <span className="text-slate-400">{MALL_INFO.address.cityDistrict}, Kerala</span>
           </div>
         </div>
       </div>
