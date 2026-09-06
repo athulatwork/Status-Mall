@@ -1,0 +1,6 @@
+{
+  "name": "STATUS MALL",
+  "description": "A premium luxury shopping mall and lifestyle destination featuring world-class shopping, fine dining, multiplex cinema, and futuristic experiences.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
